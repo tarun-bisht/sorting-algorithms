@@ -1,7 +1,31 @@
-from heap import Heap
-if __name__=="__main__":
-    a=[1,5,3,8,2,9,3,8,4,6,7,1,6,4]
-    heap=Heap(array=a)
-    print("Original Array Heap: ",heap)
-    heap.sort()
-    print("Sorted Array using Heap Sort: ",heap)
+## Start Taking Input
+try:
+    length=eval(input("Enter Number of Elements to Enter: "))
+    print("- - - - -Insert Elements and press Enter to insert next element- - - - - -")
+    a=[]
+    for i in range(length):
+        number=eval(input())
+        a.append(number)
+except Exception as e:
+    print(f"Cannot take input there is a error::{e}")
+print("Entered List::::\n",a)
+## End Taking Input
+##Importing Binary Heap Class
+from binary_heap import BinaryHeap
+##Creating binary heap object
+heap=BinaryHeap(array=a)
+##Sort Function using heap sort technique
+def sort(heap):
+    index=len(heap)-1
+    while index>0:
+        heap.swap(index,0)
+        index=index-1
+        heap.max_heapify(0,index)
+##printing heap object
+print("Original Heap: ",heap)
+##Sorting
+sort(heap)
+print("Sorted Array using Heap Sort: ",heap)
+##Accessing all elements of heap
+for i in heap:
+    print(i)
